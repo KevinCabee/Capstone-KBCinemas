@@ -1,0 +1,75 @@
+
+/* NAVBAR */
+.navbar {
+    background-color: rgba(0, 0, 0);
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    color: white; /* Sets the color of the anchor text to white */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ddd; /* Optional: change the color on hover for better visibility */
+}
+
+
+.login-btn {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.user-logo {
+    display:flex;
+    justify-content: center;  
+    align-items: center;
+}
+
+.user-logo p {
+    margin: auto;
+}
+
+
+
+/* BODY */
+h1 {
+    text-align: center;
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 70px;
+}
+
+html, body {
+    height: 100%; 
+    margin: 0; 
+}
+
+body {
+    /* background-image: url("{% static 'img/background-body.jpg' %}"); */
+    background-image: url('/static/img/background-body.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    /* height: 100vh; this allows img to take up the whole ViewHeight of the viewport */
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    flex: 1; /* Grow to fill the available space */
+}
+
+
+
+
+

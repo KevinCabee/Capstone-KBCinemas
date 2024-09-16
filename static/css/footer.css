@@ -1,0 +1,100 @@
+/* FOOTER */
+.footer {
+    background-color: rgba(0, 0, 0, 0.57);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: top;
+    padding: 10px;
+}
+
+.footer-info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-info-card li {
+    list-style: none;
+}
+
+.footer-info-card a {
+    position: relative;
+    color: rgb(183, 168, 192);
+    text-decoration: none;
+    transition: color 0.9s ease;
+    /* Only transitioning color */
+    padding: 5px;
+    display: inline-block;
+    /* Ensures that the pseudo-element behaves as expected */
+    overflow: hidden;
+}
+
+.footer-info-card a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    /* Start from the bottom */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(205, 180, 124, 0.6), rgb(255, 255, 255));
+    /* Customize your gradient */
+    transition: bottom 0.5s ease-in-out;
+    /* Smooth transition */
+    z-index: -1;
+    /* Ensures that the text is above the gradient */
+}
+
+.footer-info-card a:hover {
+    color: yellow;
+    /* Keep the hover color effect */
+}
+
+.footer-info-card a:hover::before {
+    bottom: 0;
+    /* Move the gradient into view on hover */
+}
+
+.footer h5 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.footer-info-card hr {
+    margin: 2px 0;
+    width: 100%;
+}
+
+
+.social-navbar {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.icon-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.icon-list a:hover {
+    color: yellow;
+}
+
+.icon-list i {
+    color: white;
+    font-size: 30px;
+    margin: 0 7px;
+}

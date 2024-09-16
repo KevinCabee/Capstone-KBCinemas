@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/slider.css">
+    <title>Horizontal Slider</title>
+</head>
+
+<body>
+    <div class="gallery-wrap">
+        <a href="" id="backBtn"><i class="fa-solid fa-less-than"></i></a>
+        <div class="gallery">
+            <div>
+                <span><img src="/static/img/poster-1.jpeg" alt="poster-1"></span>       
+                <span><img src="/static/img/poster-2.jpeg" alt="poster-2"></span> 
+                <span><img src="/static/img/poster-3.jpeg" alt="poster-3"></span> 
+            </div>
+            <div>
+                <span><img src="/static/img/poster-4.jpeg" alt="poster-4"></span> 
+                <span><img src="/static/img/poster-5.jpeg" alt="poster-5"></span> 
+                <span><img src="/static/img/poster-6.jpeg" alt="poster-6"></span> 
+            </div>
+            <div>
+                <span><img src="/static/img/poster-7.jpeg" alt="poster-7"></span> 
+                <span><img src="/static/img/poster-8.jpeg" alt="poster-8"></span> 
+                <span><img src="/static/img/poster-9.jpeg" alt="poster-9"></span> 
+            </div>
+            <div>
+                <span><img src="/static/img/poster-10.jpeg" alt="poster-10"></span> 
+            </div>
+        </div>
+        <a href="" id="nextBtn"><i class="fa-solid fa-greater-than" ></i></a>
+    </div>
+
+    <script>
+        let scrollContainer = document.querySelector(".gallery");
+        let backBtn = document.getElementById("backBtn");
+        let nextBtn = document.getElementById("nextBtn");
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY;
+            scrollContainer.style.scrollBehavior = "auto";
+        });
+
+        nextBtn.addEventListener("click", (evt)=>{
+            evt.preventDefault();
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft += 900;
+        });
+        
+        backBtn.addEventListener("click", (evt)=>{
+            evt.preventDefault();
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft -= 900;
+        });
+    </script>
+</body>
+
+</html>

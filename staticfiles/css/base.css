@@ -1,0 +1,61 @@
+
+/* NAVBAR */
+.navbar {
+    background-color: red;
+    color: white;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.nav-item {
+    color: white;
+}
+
+.login-btn {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.user-logo {
+    display:flex;
+    justify-content: center;  
+    align-items: center;
+}
+
+.user-logo p {
+    margin: auto;
+}
+
+
+
+/* BODY */
+h1 {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.body {
+    background-image: url("{% static 'img/background-body.jpg' %}");
+}
+
+
+
+
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 50px;
+}

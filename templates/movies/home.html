@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+{% load static %}
+
+
+{% block content %}
+<h1>Homepage</h1>
+
+<h2>Now Playing</h2>
+<div class="gallery-wrap">
+    <a href="" id="backBtn"><i class="fa-solid fa-less-than"></i></a>
+    <div class="gallery">
+        <div>
+            <img src="{% static 'img/poster-1.jpeg' %}" alt="poster-1">       
+            <img src="{% static 'img/poster-2.jpeg' %}" alt="poster-2"> 
+            <img src="{% static 'img/poster-3.jpeg' %}" alt="poster-3">
+        </div>
+        <div>
+            <img src="{% static 'img/poster-4.jpeg' %}" alt="poster-4"> 
+            <img src="{% static 'img/poster-5.jpeg' %}" alt="poster-5"> 
+            <img src="{% static 'img/poster-6.jpeg' %}" alt="poster-6"> 
+        </div>
+        <div>
+            <img src="{% static 'img/poster-7.jpeg' %}" alt="poster-7"> 
+            <img src="{% static 'img/poster-8.jpeg' %}" alt="poster-8"> 
+            <img src="{% static 'img/poster-9.jpeg' %}" alt="poster-9"> 
+        </div>
+        <div>
+            <img src="{% static 'img/poster-10.jpeg' %}" alt="poster-10"> 
+        </div>
+    </div>
+    <a href="" id="nextBtn"><i class="fa-solid fa-greater-than"></i></a>
+</div>
+
+<script>
+    let scrollContainer = document.querySelector(".gallery");
+    let backBtn = document.getElementById("backBtn");
+    let nextBtn = document.getElementById("nextBtn");
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+        scrollContainer.style.scrollBehavior = "auto";
+    });
+
+    nextBtn.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft += 765;
+    });
+
+    backBtn.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        scrollContainer.style.scrollBehavior = "smooth";
+        scrollContainer.scrollLeft -= 765;
+    });
+</script>
+
+{% endblock content %}
