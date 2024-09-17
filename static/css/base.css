@@ -2,6 +2,7 @@
 .navbar {
     background-color: rgba(0, 0, 0);
     color: white;
+    margin-bottom: 1rem;
 }
 
 .navbar-brand {
@@ -31,6 +32,12 @@
     justify-content: space-between;
 }
 
+a.nav-link.disabled {
+    pointer-events: none;
+    color: gray;
+}
+
+
 
 
 
@@ -54,10 +61,13 @@
 
 /* BODY */
 h1 {
-    text-align: center;
+    background-color: rgb(255, 166, 0, 0.706);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 40px;
     padding-top: 70px;
 }
 
@@ -83,4 +93,22 @@ body {
 
 .container-fluid {
     flex: 1;
+}
+/* FORM */
+form{
+    background-color: rgb(179, 179, 179);
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    padding: 5px;
+    width: 50%;
+}
+
+form.label {
+    margin: 0 3px;
 }

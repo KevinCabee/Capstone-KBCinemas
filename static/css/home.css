@@ -1,7 +1,53 @@
 h2 {
-    color: rgb(234, 255, 0);
+    color: whitesmoke;
     width: 100%;
     padding-left: 55px;
-    background: linear-gradient(to right, #000000 15%, #c8ff007c 100%);
+    background: linear-gradient(to right, #000000 15%, rgba(255, 166, 0, 0.816) 100%);
 }
 
+.join-link-container {
+    background-color: rgba(255, 166, 0, 0.706);
+    padding: 10px;
+}
+
+.join-link {
+    background-color: rgba(0, 0, 0, 0.828);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 45%;
+    height: max-content;
+    margin: 10px auto;
+}
+.join-link a {
+    margin: 5px auto;
+}
+
+.promotion-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.promotion {
+    background-color: rgba(0, 214, 103, 0.466);
+    display: flex;
+    padding: 5px 20px;
+    
+}
+
+.promotion-info{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}

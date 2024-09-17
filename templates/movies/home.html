@@ -5,32 +5,79 @@
 
 
 {% block content %}
-<h1>Homepage</h1>
+<div>
+    <h1>Homepage</h1>
 
-<h2>Now Playing</h2>
-<div class="gallery-wrap">
-    <a href="" id="backBtn"><i class="fa-solid fa-less-than"></i></a>
-    <div class="gallery">
-        <div>
-            <img src="{% static 'img/poster-1.jpeg' %}" alt="poster-1">       
-            <img src="{% static 'img/poster-2.jpeg' %}" alt="poster-2"> 
-            <img src="{% static 'img/poster-3.jpeg' %}" alt="poster-3">
+    <h2>Now Playing at KBCinemas</h2>
+    <div class="gallery-wrap">
+        <a href="" id="backBtn"><i class="fa-solid fa-less-than"></i></a>
+        <div class="gallery">
+            <div>
+                <img src="{% static 'img/poster-1.jpeg' %}" alt="poster-1">
+                <img src="{% static 'img/poster-2.jpeg' %}" alt="poster-2">
+                <img src="{% static 'img/poster-3.jpeg' %}" alt="poster-3">
+            </div>
+            <div>
+                <img src="{% static 'img/poster-4.jpeg' %}" alt="poster-4">
+                <img src="{% static 'img/poster-5.jpeg' %}" alt="poster-5">
+                <img src="{% static 'img/poster-6.jpeg' %}" alt="poster-6">
+            </div>
+            <div>
+                <img src="{% static 'img/poster-7.jpeg' %}" alt="poster-7">
+                <img src="{% static 'img/poster-8.jpeg' %}" alt="poster-8">
+                <img src="{% static 'img/poster-9.jpeg' %}" alt="poster-9">
+            </div>
+            <div>
+                <img src="{% static 'img/poster-10.jpeg' %}" alt="poster-10">
+            </div>
         </div>
-        <div>
-            <img src="{% static 'img/poster-4.jpeg' %}" alt="poster-4"> 
-            <img src="{% static 'img/poster-5.jpeg' %}" alt="poster-5"> 
-            <img src="{% static 'img/poster-6.jpeg' %}" alt="poster-6"> 
+        <a href="" id="nextBtn"><i class="fa-solid fa-greater-than"></i></a>
+    </div>
+    <div class="promotion-container">
+        <div class="promotion">
+            <div class="promotion-image">
+                <img src="{% static 'img/bettlejuice.avif' %}" alt="bettlejuice">
+            </div>
+            <div class="promotion-info">
+                <h3>Strange & Unusual Sips</h3>
+                <h6>Encounter the chilling flavor of our Fanta Haunted Apple ICEE© available for a limited time only
+                    when you see BEETLEJUICE BEETLEJUICE, now showing.</h6>
+                <a class="btn btn-dark" href="{% url 'tickets' %}">Get Tickets</a>
+            </div>
         </div>
-        <div>
-            <img src="{% static 'img/poster-7.jpeg' %}" alt="poster-7"> 
-            <img src="{% static 'img/poster-8.jpeg' %}" alt="poster-8"> 
-            <img src="{% static 'img/poster-9.jpeg' %}" alt="poster-9"> 
+
+        <div class="promotion">
+            <div class="promotion-info">
+                <h3>Share Snacks to Shrink Your Hunger</h3>
+                <h6>Answer your cryptic cravings and dig into a Showtime Snack Pack, featuring a large popcorn, two
+                    large drinks, and two candies to share with your sweetheart when you see BEETLEJUICE BEETLEJUICE,
+                    now showing.</h6>
+                <a class="btn btn-dark" href="{% url 'tickets' %}">Get Tickets</a>
+            </div>
+            <div class="promotion-image">
+                <img src="{% static 'img/promotion2.avif' %}" alt="promotion2">
+            </div>
         </div>
-        <div>
-            <img src="{% static 'img/poster-10.jpeg' %}" alt="poster-10"> 
+
+        <div class="promotion">
+            <div class="promotion-image">
+                <img src="{% static 'img/promotion3.avif' %}" alt="promotion3">
+            </div>
+            <div class="promotion-info">
+                <h3>More than Meets the Eye</h3>
+                <h6>Morph your movie experience and bring home the origin story with our TRANSFORMERS ONE collectible vessels. On sale 9/19 in theatres.</h6>
+                <a class="btn btn-dark" href="{% url 'tickets' %}">Get Tickets</a>
+            </div>
         </div>
     </div>
-    <a href="" id="nextBtn"><i class="fa-solid fa-greater-than"></i></a>
+
+    <div class="join-link-container">
+        <div class="join-link">
+            <h3>Join KB<span style="font-weight: bolder;">Cinemas</span> Club!</h3>
+            <p>Earn credits and get access to exclusive offers just for going out to the movies.</p>
+            <a class="btn btn-warning" href="{% url 'register' %}">Join Now</a>
+        </div>
+    </div>
 </div>
 
 <script>

@@ -1,0 +1,13 @@
+.contact-container{
+    background-color: rgba(0, 0, 0, 0.82);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2.5rem;
+    margin: 10px auto;
+    width: 70%;
+}
+
+.contact-info{
+
+}

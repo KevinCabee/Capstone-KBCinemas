@@ -4,26 +4,17 @@
 {% load static %}
 
 {% block content %}
-<h1>Sign In!</h1>
+<div>
+    <h1>Sign In!</h1>
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Login</button>
-    {% if form.errors %}
-        <p class="error">Invalid username or password.</p>
-    {% endif %}
-</form>
+    <form method="post" enctype="multipart/from-data">
+        {% csrf_token %}
 
-<label>Don't have an aaccount yet?</label>
-<a href="{% url 'register' %}">Register Here</a>
+        {{ form.as_p }}
 
+        <button class="btn btn-dark">Sign In</button>
+        <hr>
+        <label>Don't have an account yet? <a href="{% url 'register' %}">Register Here</a></label>
+    </form>
+</div>
 {% endblock content %}
-

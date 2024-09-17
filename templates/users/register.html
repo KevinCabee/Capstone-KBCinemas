@@ -3,6 +3,15 @@
 {% block title %} Register {% endblock %}
 
 {% block content %}
-<h1>Register/Create New Account</h1>
-{% endblock content %}
+<div>
+    <h1>Register/Create New Account</h1>
 
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button class="btn btn-dark">Create Account</button>
+</div>
+
+{% endblock content %}
