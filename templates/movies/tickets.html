@@ -1,14 +1,180 @@
 {% extends 'base.html' %}
 
 {% block title %} Tickets {% endblock title %}
-
+{% load static %}
 
 {% block content %}
+<div>
+    {% if not user.is_authenticated %}
+    <div class="join-opportunity">
+        <p>If you're a member, sign in now to take advantage of KBC Stubs benefits.</p>
+        <a class="btn btn-sm btn-outline-warning" href="{% url 'login' %}?next={{request.path}}">Login</a>
+    </div>
+    {% endif %}
+    <div class="ticket-container">
+        <div class="ticket_counter_container">
+            <h3>Select Tickets</h3>
+            <div class="ticket_counter">
+                <p style="font-weight: bolder; font-size: x-large;">Adult</p>
+                <div class="ticket_price">
+                    <p style="font-weight: bolder; font-size: x-large;">$18.68</p>
+                    <p style="font-size: x-small;">$16.49+$2.19 Fee*</p>
+                </div>
+                <div class="qty_btn">
+                    <button class="remove-adult-ticket" type="button" data-type="adult">-</button>
+                    <p>0</p>
+                    <button class="add-adult-ticket" type="button" data-type="adult">+</button>
+                </div>
+            </div>
 
-<h1>Tickets</h1>
+            <div class="ticket_counter">
+                <div>
+                    <p style="font-weight: bolder; font-size: x-large;">Child</p>
+                    <p style="font-size: x-small;">Age 2-12</p>
+                </div>
+                <div class="ticket_price">
+                    <p style="font-weight: bolder; font-size: x-large;">$15.68</p>
+                    <p style="font-size: x-small;">$13.49+$2.19 Fee*</p>
+                </div>
+                <div class="qty_btn">
+                    <button class="remove-child-ticket" type="button" data-type="child">-</button>
+                    <p>0</p>
+                    <button class="add-child-ticket" type="button" data-type="child">+</button>
+                </div>
+            </div>
 
-<hr>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi alias dolore, hic labore incidunt quae molestiae quibusdam deserunt et, ad dolores, atque eos laborum temporibus suscipit? Ea tenetur rerum quasi.</p>
+            <div class="ticket_counter">
+                <div>
+                    <p style="font-weight: bolder; font-size: x-large;">Senior</p>
+                    <p style="font-size: x-small;">Age 60+</p>
+                </div>
+                <div class="ticket_price">
+                    <p style="font-weight: bolder; font-size: x-large;">$17.18</p>
+                    <p style="font-size: x-small;">$14.99+$2.19 Fee*</p>
+                </div>
+                <div class="qty_btn">
+                    <button class="remove-senior-ticket" type="button" data-type="senior">-</button>
+                    <p class="adult-quantity">0</p>
+                    <button class="add-senior-ticket" type="button" data-type="senior">+</button>
+                </div>
+            </div>
+            <hr>
+            <div class="totals">
+                <div class="total_ticket">
+                    <p id="total-tickets" style="font-size:small">0 <span
+                            style="text-transform: uppercase; font-size:smaller">Tickets Selected</span></p>
+                    <p style="text-transform: uppercase; font-size:smaller; font-weight: bold">Total price: $<span
+                            id="total-price">0</span></p>
+                </div>
+                <div class="continue-btn">
+                    <a class="btn btn-sm btn-warning" id="continue-btn" href="{% url 'checkout' %}" style="pointer-events: none; opacity: 0.5;">Continue</a>
+                </div>
+            </div>
+            <div class="fee-reminder">
+                <p>*This Convenience Fee is waived for KBC Premier Members, and for Insiders purchasing 4+ tickets.
+                </p>
+            </div>
+            <div class="tooltip">
+                <a href="#">***ID Required for R-Rated Movies.***
+                    <span class="tooltiptext">Guest under 17 must be accompanied by a guardian who is 21 or older.
+                        Please be prepared to show your ID at the theatre.</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
+    {% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const prices = {
+                adult: 18.68,
+                child: 15.68,
+                senior: 17.18
+            };
 
+            function updateTotals() {
+                let totalTickets = 0;
+                let totalPrice = 0;
+
+                const quantities = document.querySelectorAll('.qty_btn > p');
+                quantities.forEach((quantityElem) => {
+                    const quantity = parseInt(quantityElem.textContent);
+                    const type = quantityElem.parentElement.querySelector('button').dataset.type;
+                    totalTickets += quantity;
+                    totalPrice += quantity * prices[type];
+                });
+
+                document.getElementById('total-tickets').textContent = `${totalTickets} Tickets Selected`;
+                document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+
+                const continueBtn = document.getElementById('continue-btn');
+
+                if (totalTickets > 0) {
+                    continueBtn.style.pointerEvents = 'auto';
+                    continueBtn.style.opacity = '1';
+                } else {
+                    continueBtn.style.pointerEvents = 'none';
+                    continueBtn.style.opacity = '0.5'; 
+                }
+            }
+
+            document.querySelectorAll('.add-adult-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.previousElementSibling;
+                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    updateTotals();
+                });
+            });
+
+            document.querySelectorAll('.remove-adult-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.nextElementSibling;
+                    const currentQuantity = parseInt(quantityElem.textContent);
+                    if (currentQuantity > 0) {
+                        quantityElem.textContent = currentQuantity - 1;
+                        updateTotals();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.add-child-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.previousElementSibling;
+                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    updateTotals();
+                });
+            });
+
+            document.querySelectorAll('.remove-child-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.nextElementSibling;
+                    const currentQuantity = parseInt(quantityElem.textContent);
+                    if (currentQuantity > 0) {
+                        quantityElem.textContent = currentQuantity - 1;
+                        updateTotals();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.add-senior-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.previousElementSibling;
+                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    updateTotals();
+                });
+            });
+
+            document.querySelectorAll('.remove-senior-ticket').forEach(button => {
+                button.addEventListener('click', function () {
+                    const quantityElem = this.nextElementSibling;
+                    const currentQuantity = parseInt(quantityElem.textContent);
+                    if (currentQuantity > 0) {
+                        quantityElem.textContent = currentQuantity - 1;
+                        updateTotals();
+                    }
+                });
+            });
+        });
+    </script>
+    {% endblock scripts %}
 {% endblock content %}

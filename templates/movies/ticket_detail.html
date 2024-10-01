@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Purchase Details {% endblock title %}
+
+
+{% block content %}
+
+<h1>Purchase Details</h1>
+<div>
+    <form method="post" action="{% url 'purchases' %}">
+        <h3>Purchase Tickets for: {{ movie.title }}</h3>
+        {% csrf_token %}
+    </form>
+</div>
+
+<p>Your order has been placed successfully. Your order ID is: <strong>{{ order_id }}</strong></p>
+
+{% endblock content %}

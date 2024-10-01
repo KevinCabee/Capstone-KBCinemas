@@ -1,39 +1,46 @@
 /* FOOTER */
 .footer {
-    background-color: rgba(0, 0, 0, 0.57);
-    color: white;
+    background-color: orange;
+    color: rgb(0, 0, 0);
     text-align: center;
-    padding: 1rem;
+    padding: 0;
     margin-top: auto;
+    width: 100%;
+
 }
 
 .footer-info {
     display: flex;
     justify-content: space-around;
-    align-items: top;
-    padding: 10px;
+    width: 100%;
 }
 
 .footer-info-card {
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 1rem;
 }
 
-.footer-info-card li {
+.footer-info-card ul {
+    padding: 0;
+    margin: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-info-card a {
     position: relative;
-    color: rgb(183, 168, 192);
+    color: rgb(255, 255, 255);
     text-decoration: none;
-    transition: color 0.9s ease;
-    /* Only transitioning color */
-    padding: 5px;
+    transition: color 0.1s ease;
+    padding: 0;
     display: inline-block;
-    /* Ensures that the pseudo-element behaves as expected */
     overflow: hidden;
+    font-size: x-small;
 }
 
 .footer-info-card a::before {
@@ -41,25 +48,19 @@
     position: absolute;
     left: 0;
     bottom: -100%;
-    /* Start from the bottom */
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(205, 180, 124, 0.6), rgb(255, 255, 255));
-    /* Customize your gradient */
-    transition: bottom 0.5s ease-in-out;
-    /* Smooth transition */
+    /* background: linear-gradient(to top, rgba(205, 180, 124, 0.6), rgb(255, 255, 255)); */
+    transition: bottom 0.3s ease-in-out;
     z-index: -1;
-    /* Ensures that the text is above the gradient */
 }
 
 .footer-info-card a:hover {
-    color: yellow;
-    /* Keep the hover color effect */
+    color: rgb(0, 0, 0);
 }
 
 .footer-info-card a:hover::before {
     bottom: 0;
-    /* Move the gradient into view on hover */
 }
 
 .footer h5 {
@@ -67,25 +68,25 @@
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 0;
+    border-bottom: 2px solid white;
 }
-
-.footer-info-card hr {
-    margin: 2px 0;
-    width: 100%;
-}
-
 
 .social-navbar {
-    background-color: black;
+    background-color: rgb(194, 126, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
+    width: 100%;
+    border-top: 1px solid black;
+    padding: 5px;
+    height: 40px;
+    font-size: smaller;
 }
 
 .icon-list {
     display: flex;
     justify-content: space-between;
+    padding-top: 20px;
     list-style: none;
 }
 
@@ -94,7 +95,7 @@
 }
 
 .icon-list i {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 30px;
     margin: 0 7px;
 }

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Movies {% endblock title %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Checkout</h1>
+<form method="POST" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-sm btn-outline-warning">Submit Payment</button>
+</form>
+
+{% endblock content %}

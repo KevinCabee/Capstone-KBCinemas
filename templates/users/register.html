@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %} Register {% endblock %}
+{% load static %}
 
 {% block content %}
-<div>
-    <h1>Register/Create New Account</h1>
+<div class="register_container">
+    <div>
+        <h1>Register New Account</h1>
 
-    <form method="post">
-        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
 
-        {{ form.as_p }}
+            {{ form.as_p }}
 
-        <button class="btn btn-dark">Create Account</button>
+            <button class="btn btn-sm btn-warning ">Create Account</button>
+    </div>
+    <div>
+        <p>Already have an account? <a class="btn btn-sm btn-outline-warning" href="{% url 'login' %}">Log in</a></p>
+    </div>
 </div>
 
 {% endblock content %}

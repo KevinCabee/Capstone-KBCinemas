@@ -1,16 +1,41 @@
 {% extends 'base.html' %}
 
 {% block title %} Food & Snacks {% endblock title %}
+{% load static %}
 
 
 {% block content %}
-
-<h1>Food & Snacks</h1>
-
-<hr> 
-
-<p>Here are some delicious and healthy options for you to enjoy while watching your favorite movies.</p>
-
-
-
+<div>
+    <h1>Food & Snacks</h1>
+    <div class="foodContainer">
+        {% for food in foods %}
+        <div class="food-poster">
+            <div class="food">
+                <img src="{{food.picture.url}}" alt="food-item" />
+                <h3>{{ food.title }}</h3>
+                <p>{{ food.category }}</p>
+                <p>{{ food.price }}</p>
+            </div>
+            <div class="quantity">
+                <label for="quantity">Select Quantity:</label>
+                <select name="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="addToCart-btn">
+                <a class="btn btn-outline-warning" href="{% url 'cart' %}">Add to Cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

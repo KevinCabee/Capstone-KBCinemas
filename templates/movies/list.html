@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Movies {% endblock title %}
+{% load static %}
+
+{% block content %}
+
+
+<h1>Movies</h1>
+<div class="moviesContainer">
+    {% for movie in movies %}
+    <div class="movie-poster">
+        <div class="movie">
+            <img src="{{movie.picture.url}}" alt="movie-poster" />
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.category }}</p>
+            <p>Rated: {{ movie.rating }}</p>
+        </div>
+        <div class="detail-btn">
+            <a class="btn btn-outline-warning" href="{% url 'movie_detail' movie.id %}">More Details</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

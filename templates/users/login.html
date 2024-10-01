@@ -12,9 +12,9 @@
 
         {{ form.as_p }}
 
-        <button class="btn btn-dark">Sign In</button>
+        <button class="btn btn-sm btn-warning">Sign In</button>
         <hr>
-        <label>Don't have an account yet? <a href="{% url 'register' %}">Register Here</a></label>
+        <p>Don't have an account yet? <a href="{% url 'register' %}">Register Here</a></p>
     </form>
 </div>
 {% endblock content %}

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
 from .forms import UserRegisterForm, ProfileEditForm
-from .models import Profile
+from .models import Profile, Cart
 
 
 # Create your views here by creating classes. 
@@ -17,9 +17,10 @@ from .models import Profile
 class UserLoginView(LoginView):
     template_name = 'users/login.html'
     
-    def get_success_url(self):
-        # after login, send the user to home page
-        return reverse('home')
+    # def get_success_url(self):
+    #     # after login, send the user to home page
+
+    #     return reverse('home')
 
     # def get(self, request):
     #     return render(request, self.template_name)
@@ -71,3 +72,9 @@ class EditProfile(UpdateView):
     
     def get_success_url(self):
         return reverse('home')
+
+class UserCartView(CreateView):
+    model = Cart
+    template_name = 'user/cart.html'
+    context_object_name = 'cart'
+    fields = ['food', 'quantity', 'price']

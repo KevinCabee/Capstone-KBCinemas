@@ -34,3 +34,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     
+class Cart(models.Model):
+    picture = models.ImageField(upload_to='food/', null=True, blank=True)
+    title = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
+    price = models.CharField(max_length=10)

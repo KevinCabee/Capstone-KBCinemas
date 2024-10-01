@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Movies {% endblock title %}
+{% load static %}
+
+
+{% block content %}
+<h1>Movie Details</h1>
+<div class="detail_container">
+    <div class="detail_img">
+        <img src="{{ movie.picture.url }}" alt="">
+    </div>
+    <div class="detail_info">
+        <h3>{{movie.title}}</h3>
+        <ul class="detail_nomenclature">
+            <li>
+                {{movie.category}}
+            </li>
+            <li>
+                Rated {{movie.rating}}
+            </li>
+            <li>
+                Duration: {{movie.length}}
+            </li>
+            <li>
+                Released on: {{movie.release_date}}
+            </li>
+        </ul>
+        <div class="detail_description">
+            {{movie.description}}
+        </div>
+        <div>
+            <a class="btn btn-sm btn-warning" href="{% url 'tickets' %}">Buy Tickets!</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

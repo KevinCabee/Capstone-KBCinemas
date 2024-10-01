@@ -1,0 +1,47 @@
+.foodContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: auto;
+    width: 90%;
+    padding: 1rem;
+}
+.food-poster {
+    background-color: rgba(191, 191, 191, 0.288);
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    gap: 10px;
+    color: white;
+    border-radius: 13px;
+    padding: 5px;
+    max-width: 210px;
+}
+.food{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.food h3, p{
+    margin: 0;
+    flex-wrap: wrap;
+}
+.food a{
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 10px;
+    background-color: orange;
+    color: white;
+}
+.food img{
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+.addToCart-btn a{
+    border-radius: 10px;
+}

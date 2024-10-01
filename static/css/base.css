@@ -1,23 +1,24 @@
 /* NAVBAR */
 .navbar {
-    background-color: rgba(0, 0, 0);
+    background-color: orange;
     color: white;
     margin-bottom: 1rem;
 }
 
 .navbar-brand {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: white;
+}
+
+.navbar-brand:hover {
+    color: rgb(0, 0, 0);
 }
 
 .navbar-nav .nav-link {
     color: white;
-    /* Sets the color of the anchor text to white */
 }
-
-.navbar-nav .nav-link:hover {
-    color: #ddd;
-    /* Optional: change the color on hover for better visibility */
+.nav-link{
+    padding: 0;
 }
 
 .nav-item {
@@ -27,88 +28,84 @@
     justify-content: center;
 }
 
-.navbar div{
-    display: flex;
-    justify-content: space-between;
+.nav-item:hover .nav-link,
+.nav-item:hover i {
+    color: rgb(0, 0, 0);
+}
+a.nav-link.disabled,
+a.nav-link.disabled i {
+    pointer-events: none;
+    color: gray !important;
 }
 
-a.nav-link.disabled {
-    pointer-events: none;
+a.nav-link.disabled:hover,
+a.nav-link.disabled:hover i {
     color: gray;
 }
 
 
 
-
-
-/* .login-btn {
+/* BODY */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    color: rgb(204, 33, 33);
+    font-size: small;
 }
 
-.user-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.content-wrapper{
+    flex-grow: 1;
 }
 
-.user-logo p {
-    margin: auto;
-} */
+hr {
+    border: solid 1px orange !important;
+    height: 2px !important;
+    background-color: orange !important;
+    margin: 2px 0 !important;
+    width: 100% !important;
+}
 
-
-
-/* BODY */
 h1 {
-    background-color: rgb(255, 166, 0, 0.706);
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     width: 100%;
-    margin-top: 40px;
-    padding-top: 70px;
-}
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-body {
-    /* background-image: url("{% static 'img/background-body.jpg' %}"); */
-    background-image: url('/static/img/background-body.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* height: 100vh; this allows img to take up the whole ViewHeight of the viewport */
-    background-attachment: fixed;
-    flex-grow: 1;
-    
 }
 
 .container-fluid {
-    flex: 1;
+    display: flex;
+    justify-content: space-around;
 }
+
 /* FORM */
-form{
+form {
     background-color: rgb(179, 179, 179);
     border: 1px solid rgb(179, 179, 179);
     border-radius: 5px;
-    color: black;
+    color: white;
+    font-size: small;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 1rem auto;
-    padding: 5px;
-    width: 50%;
+    padding: 1rem 0;
+    width: 70%;
 }
 
-form.label {
-    margin: 0 3px;
+form p {
+    padding: 3px;
+    margin: 0;
+}
+form .helptext{
+    font-size: x-small;
+    color: #ccc;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    position: relative;
+    text-align: center;
 }

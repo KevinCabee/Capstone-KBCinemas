@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from movies.views  import UserHomePageView
+from food.views import FoodAndDrinkView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('movies/', include('movies.urls')),
-    path('food/', include('foodAndDrinks.urls')),
+    path('food/', include('food.urls')),
 ]
 
 
