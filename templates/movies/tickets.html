@@ -59,15 +59,39 @@
                 </div>
             </div>
             <hr>
+            <div>
+                <h3>Would you like to add a combo? </h3>
+            </div>
+            <div class="add_combo_container">
+                <div class="add_combo">
+                    <div class="combo_info">
+                        <img src="{{food.picture.url}}" alt="combo" />
+                        <div>
+                            <h5>Small Popcorn + 2 Large Drink</h5>
+                            <h5>$49.68</h5>
+                            <a style="color: orange;" href="{% url 'food' %}">Other Food Items</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="qty_btn">
+                    <button class="remove-food-ticket" type="button" data-type="food">-</button>
+                    <p class="food-quantity">0</p>
+                    <button class="add-food-ticket" type="button" data-type="food">+</button>
+                </div>
+            </div>
+            <hr>
             <div class="totals">
                 <div class="total_ticket">
                     <p id="total-tickets" style="font-size:small">0 <span
                             style="text-transform: uppercase; font-size:smaller">Tickets Selected</span></p>
+                    <p id="total-combos" style="font-size:small">0 <span
+                            style="text-transform: uppercase; font-size:smaller">Food Items Selected</span></p>
                     <p style="text-transform: uppercase; font-size:smaller; font-weight: bold">Total price: $<span
                             id="total-price">0</span></p>
                 </div>
                 <div class="continue-btn">
-                    <a class="btn btn-sm btn-warning" id="continue-btn" href="{% url 'checkout' %}" style="pointer-events: none; opacity: 0.5;">Continue</a>
+                    <a class="btn btn-sm btn-warning" id="continue-btn" href="{% url 'checkout' %}"
+                        style="pointer-events: none; opacity: 0.5;">Continue</a>
                 </div>
             </div>
             <div class="fee-reminder">
@@ -95,6 +119,7 @@
             function updateTotals() {
                 let totalTickets = 0;
                 let totalPrice = 0;
+                let totalCombos = 0;
 
                 const quantities = document.querySelectorAll('.qty_btn > p');
                 quantities.forEach((quantityElem) => {
@@ -114,7 +139,7 @@
                     continueBtn.style.opacity = '1';
                 } else {
                     continueBtn.style.pointerEvents = 'none';
-                    continueBtn.style.opacity = '0.5'; 
+                    continueBtn.style.opacity = '0.5';
                 }
             }
 
@@ -177,4 +202,4 @@
         });
     </script>
     {% endblock scripts %}
-{% endblock content %}
+    {% endblock content %}
