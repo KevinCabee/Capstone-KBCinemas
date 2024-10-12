@@ -9,16 +9,19 @@
     <h1>Food & Snacks</h1>
     <div class="foodContainer">
         {% for food in foods %}
-        <div class="food-poster">
+        <form class="food-poster" method="POST" action="{% url 'add_food' %}">
+            {% csrf_token %}
+            <input type="hidden" name="food_id" value="{{food.id}}" /> 
+            <input type="hidden" name="food_price" value="{{food.price}}" /> 
             <div class="food">
                 <img src="{{food.picture.url}}" alt="food-item" />
                 <h3>{{ food.title }}</h3>
                 <p>{{ food.category }}</p>
-                <p>{{ food.price }}</p>
+                <p>${{ food.price }}</p>
             </div>
             <div class="quantity">
                 <label for="quantity">Select Quantity:</label>
-                <select name="quantity" id="quantity">
+                <select name="food_quantity" id="quantity">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -32,10 +35,12 @@
                 </select>
             </div>
             <div class="addToCart-btn">
-                <a class="btn btn-outline-warning" href="{% url 'cart' %}">Add to Cart</a>
+                <button type="submit" class="btn btn-outline-warning">Add to Cart</button>
             </div>
-        </div>
+        </form>
         {% endfor %}
     </div>
+    <hr>
+    <a class="btn btn-lg btn-outline-warning" style="float: right; margin: 20px;" href="{% url 'cart' %}">View Cart</a>
 </div>
 {% endblock content %}

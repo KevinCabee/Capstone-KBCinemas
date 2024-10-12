@@ -58,28 +58,7 @@
                     <button class="add-senior-ticket" type="button" data-type="senior">+</button>
                 </div>
             </div>
-            <hr>
-            <div>
-                <h3>Would you like to add a combo? </h3>
-            </div>
-            <div class="add_combo_container">
-                <div class="add_combo">
-                    <div class="combo_info">
-                        <img src="{{food.picture.url}}" alt="combo" />
-                        <div>
-                            <h5>Small Popcorn + 2 Large Drink</h5>
-                            <h5>$49.68</h5>
-                            <a style="color: orange;" href="{% url 'food' %}">Other Food Items</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="qty_btn">
-                    <button class="remove-food-ticket" type="button" data-type="food">-</button>
-                    <p class="food-quantity">0</p>
-                    <button class="add-food-ticket" type="button" data-type="food">+</button>
-                </div>
-            </div>
-            <hr>
+            <hr> 
             <div class="totals">
                 <div class="total_ticket">
                     <p id="total-tickets" style="font-size:small">0 <span
@@ -90,8 +69,22 @@
                             id="total-price">0</span></p>
                 </div>
                 <div class="continue-btn">
-                    <a class="btn btn-sm btn-warning" id="continue-btn" href="{% url 'checkout' %}"
-                        style="pointer-events: none; opacity: 0.5;">Continue</a>
+                    <form method="POST" action="{% url 'add_movies'%}">
+                        {% csrf_token %}
+                    <input type="hidden" id="movie_id" name="movie_id" value="{{movie.id}}" />
+
+                    <input type="hidden" id="adult_quantity" name="adult_quantity" value="0" />
+                    <input type="hidden" id="child_quantity" name="child_quantity" value="0" />
+                    <input type="hidden" id="senior_quantity" name="senior_quantity" value="0" />
+
+                    <input type="hidden" name="adult_price" value="18.68" />
+                    <input type="hidden" name="child_price" value="15.68" />
+                    <input type="hidden" name="senior_price" value="17.18" />
+
+                    <button type="submit" 
+                        class="btn btn-sm btn-warning" id="continue-btn"
+                        style="pointer-events: none; opacity: 0.5;">Continue</button>
+                    </form>
                 </div>
             </div>
             <div class="fee-reminder">
@@ -146,7 +139,9 @@
             document.querySelectorAll('.add-adult-ticket').forEach(button => {
                 button.addEventListener('click', function () {
                     const quantityElem = this.previousElementSibling;
-                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    const quantity = parseInt(quantityElem.textContent) + 1;
+                    quantityElem.textContent = quantity;
+                    document.getElementById('adult_quantity').value = quantity;
                     updateTotals();
                 });
             });
@@ -157,6 +152,7 @@
                     const currentQuantity = parseInt(quantityElem.textContent);
                     if (currentQuantity > 0) {
                         quantityElem.textContent = currentQuantity - 1;
+                        document.getElementById('adult_quantity').value = currentQuantity - 1;
                         updateTotals();
                     }
                 });
@@ -165,7 +161,9 @@
             document.querySelectorAll('.add-child-ticket').forEach(button => {
                 button.addEventListener('click', function () {
                     const quantityElem = this.previousElementSibling;
-                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    const quantity = parseInt(quantityElem.textContent) + 1;
+                    quantityElem.textContent = quantity;
+                    document.getElementById('child_quantity').value = quantity;
                     updateTotals();
                 });
             });
@@ -175,7 +173,9 @@
                     const quantityElem = this.nextElementSibling;
                     const currentQuantity = parseInt(quantityElem.textContent);
                     if (currentQuantity > 0) {
-                        quantityElem.textContent = currentQuantity - 1;
+                        const quantity = currentQuantity - 1;
+                        quantityElem.textContent =quantity;
+                        document.getElementById('child_quantity').value = quantity;
                         updateTotals();
                     }
                 });
@@ -184,7 +184,9 @@
             document.querySelectorAll('.add-senior-ticket').forEach(button => {
                 button.addEventListener('click', function () {
                     const quantityElem = this.previousElementSibling;
-                    quantityElem.textContent = parseInt(quantityElem.textContent) + 1;
+                    const quantity = parseInt(quantityElem.textContent) + 1;
+                    quantityElem.textContent = quantity;
+                    document.getElementById('senior_quantity').value = quantity;
                     updateTotals();
                 });
             });
@@ -194,7 +196,9 @@
                     const quantityElem = this.nextElementSibling;
                     const currentQuantity = parseInt(quantityElem.textContent);
                     if (currentQuantity > 0) {
-                        quantityElem.textContent = currentQuantity - 1;
+                        const quantity = currentQuantity - 1;
+                        quantityElem.textContent = quantity;
+                        document.getElementById('senior_quantity').value = quantity;
                         updateTotals();
                     }
                 });

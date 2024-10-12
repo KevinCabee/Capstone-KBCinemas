@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from food.models import Food
+from movies.models import Movie
 
 # Create your models here.
 class Category(models.Model):
@@ -35,7 +37,18 @@ class Profile(models.Model):
         return self.user.username
     
 class Cart(models.Model):
-    picture = models.ImageField(upload_to='food/', null=True, blank=True)
-    title = models.CharField(max_length=200)
-    category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
-    price = models.CharField(max_length=10)
+    movie = models.ForeignKey(Movie, blank=True, null=True, on_delete=models.CASCADE) 
+    movie_adult_quantity = models.IntegerField(null=True, blank=True)
+    movie_child_quantity = models.IntegerField(null=True, blank=True)
+    movie_senior_quantity = models.IntegerField(null=True, blank=True)
+    movie_total = models.IntegerField(null=True, blank=True )
+
+    food = models.ForeignKey(Food, blank=True, null=True, on_delete=models.CASCADE)
+    food_quantity = models.IntegerField(null=True, blank=True)
+    food_total = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        if (self.movie):
+            return f"MOVIE - {self.movie.title}"
+        else:
+            return f"FOOD - {self.food.title}"

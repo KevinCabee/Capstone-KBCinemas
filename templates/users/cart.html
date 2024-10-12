@@ -7,7 +7,61 @@
 <div>
     <div>
         <h1>Cart</h1>
-        
+        <div class="cart">
+            <div class="items">
+                <div>
+                    {% for item in records %}
+                    {% if item.movie %}
+                    <div class="cart-item">
+                        <div>
+                            <img src="{{item.movie.picture.url}}" alt="movie-image">
+                            <div class="title-total">
+                                <h5> {{item.movie.title}} </h5>
+                                <!-- {% if item.movie_adult_quantity %}
+                                    <label>Adults: ${{item.movie_adult_quantity}}</label>
+                                {% endif %} -->
+                                
+                                <label>${{item.movie_total}}</label>
+                            </div>
+                        </div>
+                        
+                        <form method="post" action="{% url 'delete_item' item.id %}">
+                            {% csrf_token %}
+                            <button class="rmv-btn btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div>
+                    {% for item in records %}
+                    {% if item.food %}
+                    <div class="cart-item">
+                        <div>
+                            <img src="{{item.food.picture.url}}" alt="food-image">
+                            <div class="title-total">
+                                <h5> {{item.food.title}} </h5>
+                                <label> ${{ item.food_total}} </label>
+                            </div>
+                        </div>
+
+                        <form method="post" action="{% url 'delete_item' item.id %}">
+                            {% csrf_token %}
+                            <button class="rmv-btn btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="subtotal">
+                <h3>Subtotal: ${{ total }}</h3>
+                <a class="btn btn-sm btn-warning" href="{% url 'checkout' %}">Proceed to checkout</a>
+            </div>
+        </div>
+
+
     </div>
 </div>
 

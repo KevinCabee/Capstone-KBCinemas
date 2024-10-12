@@ -18,12 +18,10 @@ class MovieListView(ListView):
     context_object_name ='movies'
 
     
-class UserTicketView(View):
+class UserTicketView(DetailView):
+    model = Movie
     template_name = 'movies/tickets.html'
-
-    def get(self, request):
     
-        return render(request, self.template_name)
     
 class MovieDetailPage(DetailView):
     model = Movie

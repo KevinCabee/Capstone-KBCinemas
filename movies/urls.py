@@ -3,7 +3,7 @@ from .views import MovieListView, UserTicketView, MovieDetailPage, TicketDetailV
 
 urlpatterns = [
     path('list/', MovieListView.as_view(), name='movies'),
-    path('tickets/', UserTicketView.as_view(), name='tickets'), 
+    path('tickets/<int:pk>/', UserTicketView.as_view(), name='tickets'), 
     path('details/<int:pk>/', MovieDetailPage.as_view(), name='movie_detail'),  
     path('purchases/', TicketDetailView.as_view(), name='purchases'),
     path('checkout/', checkout, name='checkout'),

@@ -11,8 +11,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tickets' %}"><i class="fa-solid fa-ticket" ></i></a>
-                    <a class="nav-link" aria-current="page" href="{% url 'tickets' %}">Tickets</a>
+                    <a class="nav-link" href="{% url 'tickets' 1 %}"><i class="fa-solid fa-ticket" ></i></a>
+                    <a class="nav-link" aria-current="page" href="{% url 'tickets' 1 %}">Tickets</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'movies' %}"><i class="fa-solid fa-video"></i></a>
@@ -34,10 +34,13 @@
                 <i class="fa-regular fa-circle-user"></i>
                 {% if user.is_authenticated %}
                 Hi, {{ user.first_name }} 
-                {% else %}
-                Log-In
-                {% endif %}
             </button>
+            <a href="{% url 'cart' %}" class="cart-btn btn btn-secondary" type="button">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            {% else %}
+            Log-In
+            {% endif %}
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                 {% if user.is_authenticated %}
                 <a href="{% url 'edit_profile' %}" class="dropdown-item">Edit Profile</a>

@@ -50,4 +50,13 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 3rem;
+    width: 50%;
 }
+.promotion-image{
+    width: 100%;
+}
+.promotion-image img{
+    width: 100%;
+}
+ 
+ 

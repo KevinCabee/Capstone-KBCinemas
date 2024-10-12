@@ -30,7 +30,7 @@
             {{movie.description}}
         </div>
         <div>
-            <a class="btn btn-sm btn-warning" href="{% url 'tickets' %}">Buy Tickets!</a>
+            <a class="btn btn-sm btn-warning" href="{% url 'tickets' movie.id %}">Buy Tickets!</a>
         </div>
     </div>
 </div>
